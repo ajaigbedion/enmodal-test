@@ -7,8 +7,9 @@ import json
 import sys
 
 sys.path.insert(0, '../lib/transit')
-import Transit
-from TransitGIS import *
+from lib.transit import Transit
+from lib.transit.TransitGIS import *
+
 
 def main():
     parser = argparse.ArgumentParser(description='Load a session by ID and run interactive session')

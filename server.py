@@ -1,7 +1,7 @@
 # Flask and plugins
 from flask import Flask, render_template, request, after_this_request
 from flask_login import LoginManager, UserMixin, current_user, login_required, login_user, logout_user
-
+from waitress import serve
 # enmodal libraries
 import os
 import sys
@@ -73,4 +73,10 @@ if __name__ == "__main__":
     if not os.path.isdir(UPLOAD_FOLDER):
         os.mkdir(UPLOAD_FOLDER)
 
-    run_server()
+    # run_server()
+    serve(
+      application.run(),
+        host="127.0.0.1",
+        port=5050,
+        threads=2
+    )

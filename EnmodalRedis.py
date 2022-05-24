@@ -3,8 +3,8 @@ import os
 import sys
 import datetime
 
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), 'lib', 'transit')))
-import Transit
+from lib.transit import Transit
+
 
 import ConfigParser
 

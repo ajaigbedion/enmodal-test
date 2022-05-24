@@ -10,8 +10,8 @@ import zipfile
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__))))
 from EnmodalSessions import *
 from EnmodalMap import *
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), 'lib', 'transit')))
-import Transit
+from lib.transit import Transit
+
 
 from lzstring import LZString
 import json

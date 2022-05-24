@@ -11,7 +11,7 @@ from geopy.geocoders import ArcGIS
 from streetaddress import StreetAddressFormatter, StreetAddressParser
 ap = StreetAddressParser()
 
-import Transit
+from lib.transit import Transit
 import configparser
 
 import sys

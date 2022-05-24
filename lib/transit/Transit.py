@@ -1,9 +1,10 @@
-import TransitSettings
-import TransitGIS
-import TransitModel
+from lib.transit import TransitSettings
+from lib.transit import TransitGIS
+from lib.transit import TransitModel
+
 import json
 
-from geopy.distance import great_circle
+import geopy
 
 class Map(object):
     """A Map contains a collection of Services, everything needed for a single Transit session.
@@ -534,7 +535,7 @@ class Service(object):
             if line.has_edge(edge):
                 station_a = self.find_station(line.get_stop_by_id(stop_ids[0]).station_id)
                 station_b = self.find_station(line.get_stop_by_id(stop_ids[1]).station_id)
-                return great_circle((station_a.location[0], station_a.location[1]), (station_b.location[0], station_b.location[1])).miles
+                return geopy.distance.great_circle((station_a.location[0], station_a.location[1]), (station_b.location[0], station_b.location[1])).miles
         return None
                 
 

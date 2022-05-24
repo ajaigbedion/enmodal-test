@@ -1,9 +1,10 @@
-import Transit
-import TransitGIS
+from lib.transit import Transit
+from lib.transit import TransitGIS
+
 import json
 import time
 
-from geopy.distance import great_circle
+import geopy
 
 CATCHMENT_DISTANCE = 0.5
 
@@ -56,7 +57,7 @@ def map_analysis(m):
                     hexagon_to_station[hexagon] = []
                 center = hexagon.center()
                 # Look for stations within catchment.
-                distance = great_circle(center, (station.location[1], station.location[0])).miles
+                distance = distance = geopy.distance.great_circle(center, (station.location[1], station.location[0])).miles
                 if (distance <= CATCHMENT_DISTANCE):
                     if hexagon in hexagon_to_station:
                         hexagon_to_station[hexagon].append(station)

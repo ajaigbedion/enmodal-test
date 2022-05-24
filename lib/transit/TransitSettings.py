@@ -1,5 +1,6 @@
 import json
-import Transit
+from lib.transit import Transit
+
 
 class Pin(object):
     
