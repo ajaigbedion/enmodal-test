@@ -67,7 +67,7 @@ var ALLOW_STATION_MERGING = true;
 var SERVICE_MODES_ENABLED = false;
 
 var PIN_ICON = L.icon({
-    iconUrl: 'static/img/pin.png',
+    iconUrl: 'src/img/pin.png',
     iconSize: [30, 25],
     iconAnchor: [15, 25]
 });

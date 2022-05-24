@@ -1,4 +1,4 @@
-/*! enmodal - v0.1.0 - 2022-05-22
+/*! enmodal - v0.1.0 - 2022-05-23
 * http://enmodal.co/
 * Copyright (c) 2022 Jason Wright; Licensed MIT */
 function handle_map_click(e) {
@@ -3493,7 +3493,7 @@ var ALLOW_STATION_MERGING = true;
 var SERVICE_MODES_ENABLED = false;
 
 var PIN_ICON = L.icon({
-    iconUrl: 'static/img/pin.png',
+    iconUrl: 'src/img/pin.png',
     iconSize: [30, 25],
     iconAnchor: [15, 25]
 });
