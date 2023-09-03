@@ -209,6 +209,7 @@ def station_constructor(sid, lat, lng, road_name):
     name = re.sub(r'(\w+\s)\b(Expressway)\b', r'\1Expy', name)
     name = re.sub(r'(\w+\s)\b(Turnpike)\b', r'\1Tpke', name)
     name = re.sub(r'(\w+\s)\b(Court)\b', r'\1Ct', name)
+    name = re.sub(r'(\w+\s)\b(Place)\b', r'\1Pl', name)
     
     
     s = Transit.Station(sid, name, [lat, lng])
