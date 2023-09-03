@@ -19,6 +19,9 @@ import threading
 import multiprocessing
 import time
 
+import geopy
+from geopy.geocoders import Nominatim
+
 import sys
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), 'lib', 'transit')))
 import Transit
@@ -45,6 +48,8 @@ SESSIONS_SECRET_KEY_PRIVATE = int(config.get('sessions', 'secret_key_private'), 
 SESSION_EXPIRATION_TIME = int(config.get('sessions', 'expiration_time'))
 
 enmodal = Blueprint('enmodal', __name__)
+
+locator = Nominatim(user_agent="google")
 
 def gzipped(f):
     @functools.wraps(f)
@@ -98,12 +103,16 @@ def route_station_add():
 
     lat = request.args.get('lat')
     lng = request.args.get('lng')
+    location = locator.reverse(lat + "," + lng)
+    print(location.raw)
+    print("THIS IS A TEST")
+    road_name = location.raw["address"]["road"]
     station_id = request.args.get('station_id')
     m = session_manager.auth_by_key(h).session.map
 
     for service in m.services:
         if service_id == str(service.sid):
-            station = TransitGIS.station_constructor(int(station_id), lat, lng)
+            station = TransitGIS.station_constructor(int(station_id), lat, lng, road_name)
             service.add_station(station)
             return station.to_json()
 

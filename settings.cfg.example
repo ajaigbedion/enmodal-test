@@ -25,4 +25,4 @@ secret_key_public: aaaaaaaaaaaaaaaa
 secret_key_private: bbbbbbbbbbbbbbbb
 
 # Session expiration time, in seconds.
-expiration_time: 1800
+expiration_time: 0

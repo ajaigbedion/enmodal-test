@@ -180,7 +180,7 @@ def reverse_geocode(provider, lat, lng):
     return result
         
 
-def station_constructor(sid, lat, lng):
+def station_constructor(sid, lat, lng, road_name):
     
     name = ""
     
@@ -192,6 +192,8 @@ def station_constructor(sid, lat, lng):
         name = rgr.neighborhood
     elif (rgr.has_locality):
         name = rgr.locality
+    elif(road_name):
+        name = road_name
     else:
         name = "Station"
     if len(name) <= 1:
@@ -203,6 +205,11 @@ def station_constructor(sid, lat, lng):
     name = re.sub(r'(\w+\s)\b(Avenue)\b', r'\1Av', name)
     name = re.sub(r'(\w+\s)\b(Lane)\b', r'\1Ln', name)
     name = re.sub(r'(\w+\s)\b(Boulevard)\b', r'\1Blvd', name)
+    name = re.sub(r'(\w+\s)\b(Parkway)\b', r'\1Pkwy', name)
+    name = re.sub(r'(\w+\s)\b(Expressway)\b', r'\1Expy', name)
+    name = re.sub(r'(\w+\s)\b(Turnpike)\b', r'\1Tpke', name)
+    name = re.sub(r'(\w+\s)\b(Court)\b', r'\1Ct', name)
+    
     
     s = Transit.Station(sid, name, [lat, lng])
     s.streets = rgr.streets
